@@ -1,0 +1,59 @@
+{% extends 'blog/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<a href="http://vk.com/share.php?url=http://127.0.0.1:8000/film/{{film.pk}}"
+   target="_blank" rel="nofollow">
+   поделиться вк
+</a>
+
+
+<!-- 		{% for dir in directors %}
+			<div class = "">
+		    	<h1><a href="{% url 'director' pk=director.pk %}">{{ dir }}</a></h1>
+		        <!-- <p>{{ post.text|linebreaksbr }}</p> -->
+<!-- 		    </div>
+		{% endfor %} -->
+<!-- 		<h1>{{ director.name }}</h1>
+-->
+
+	<h1>{{ film.title}} / {{film.director}} {{film.year}} </h1>
+
+	<img src = "{{film.image}}" width = 853>
+
+	<br><br>
+
+
+
+
+{{from_lists.text}}
+
+<br><br>
+
+Цитата из статьи: <a href = >{{from_lists.owner_list}}</a>
+
+<br><br>
+
+{% if videos.count > 0%}
+
+
+<h3>Смотреть фильм {{film.title}} ({{film.director}}, {{film.year}}) онлайн: </h3>
+{%endif%}
+
+
+
+		{% for video in videos%}
+
+			<iframe src= {{video.player}} width="853" height="480" frameborder="0" allowfullscreen></iframe>
+
+			<br><br>
+
+		{% endfor %}
+
+
+
+
+{% endblock %}
+
